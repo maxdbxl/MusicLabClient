@@ -34,9 +34,12 @@ export class RegisterMemberComponent {
   // ]
 
   registerForm = this.fb.group({
-    username: [null, [Validators.required, Validators.maxLength(100)]],
+    username: [null, [Validators.required, Validators.maxLength(100)], [
+      (control: AbstractControl) => this.memberService.existsUsername(control.value, control.)
+      .pipe(map(v => v ? { exist: true} : null))
+    ]],
     email: [null, [Validators.required, Validators.maxLength(450), Validators.email], [
-      (control: AbstractControl) => this.memberService.exists(control.value)
+      (control: AbstractControl) => this.memberService.existsEmail(control.value)
       .pipe(map(v => v ? { exist: true} : null))
     ]],
     password: [null, [Validators.required]],
@@ -48,9 +51,6 @@ export class RegisterMemberComponent {
     if (this.registerForm.invalid) {
       return;
     }
-
-    
-
     //Soumettre le formulaire à l'API
     //TODO : Ajouter Loader
     this.memberService.register({...this.registerForm.value})

@@ -16,9 +16,19 @@ export class MemberService {
     return this.httpClient.post(environment.baseApiUrl + '/member', form);
   }
 
-  exists(email: string) {
+  existsEmail(input: string) {
     return this.httpClient.head(environment.baseApiUrl + '/member', {
-      params: { email }
+      params: { input }
+    }).pipe(
+      map(() => true),
+      catchError(() => of(false))
+    )
+  }
+
+  existsUsername(username: string, control: any) {
+    console.log(control);
+    return this.httpClient.head(environment.baseApiUrl + '/member', {
+      params: { username }
     }).pipe(
       map(() => true),
       catchError(() => of(false))

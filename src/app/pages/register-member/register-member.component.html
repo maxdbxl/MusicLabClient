@@ -37,5 +37,19 @@
         <app-form-error [control]="registerForm.get('confirmPassword')!"></app-form-error>
       </div>
     </div>
+
+    <ng-template #footer>
+      <p-button
+        type="submit"
+        
+        loadingIcon="pi pi-cog"
+        label="Sauver"
+      >
+      <!--TODO : [disabled]="isLoading"
+        [loading]="isLoading" -->
+        
+      </p-button>
+    </ng-template>
+
   </p-card>
 </form>
