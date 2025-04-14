@@ -35,7 +35,7 @@ export class RegisterMemberComponent {
 
   registerForm = this.fb.group({
     username: [null, [Validators.required, Validators.maxLength(100)], [
-      (control: AbstractControl) => this.memberService.existsUsername(control.value, control.)
+      (control: AbstractControl) => this.memberService.existsUsername(control.value)
       .pipe(map(v => v ? { exist: true} : null))
     ]],
     email: [null, [Validators.required, Validators.maxLength(450), Validators.email], [

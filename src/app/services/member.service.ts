@@ -16,17 +16,17 @@ export class MemberService {
     return this.httpClient.post(environment.baseApiUrl + '/member', form);
   }
 
-  existsEmail(input: string) {
+  existsEmail(email: string) {
     return this.httpClient.head(environment.baseApiUrl + '/member', {
-      params: { input }
+      params: { email }
     }).pipe(
       map(() => true),
       catchError(() => of(false))
     )
   }
 
-  existsUsername(username: string, control: any) {
-    console.log(control);
+  existsUsername( username : string) {
+
     return this.httpClient.head(environment.baseApiUrl + '/member', {
       params: { username }
     }).pipe(
