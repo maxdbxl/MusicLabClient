@@ -7,7 +7,9 @@
           <input pInputText formControlName="username" />
           <label>Nom d'utilisateur</label>
         </p-float-label>
-        <app-form-error [control]="registerForm.get('username')!"></app-form-error>
+        <app-form-error
+          [control]="registerForm.get('username')!"
+        ></app-form-error>
       </div>
     </div>
     <div class="grid">
@@ -19,37 +21,46 @@
         <app-form-error [control]="registerForm.get('email')!"></app-form-error>
       </div>
     </div>
-    <div class="grid">
-      <div class="col-6">
-        <p-float-label variant="on">
-          <input pInputText formControlName="password" />
-          <label>Mot de passe</label>
-        </p-float-label>
-        <app-form-error [control]="registerForm.get('password')!"></app-form-error>
-      </div>
-    </div>
-    <div class="grid">
-      <div class="col-6">
-        <p-float-label variant="on">
-          <input pInputText formControlName="confirmPassword" />
-          <label>Confirmez le mot de passe</label>
-        </p-float-label>
-        <app-form-error [control]="registerForm.get('confirmPassword')!"></app-form-error>
-      </div>
-    </div>
 
+    <div formGroupName="password">
+      <div class="grid">
+        <div class="col-6">
+          <p-float-label variant="on">
+            <p-password
+              formControlName="password"
+              [feedback]="false"
+              autocomplete="new-password"
+              [toggleMask]="true"
+            />
+            <label>Mot de passe</label>
+          </p-float-label>
+          <app-form-error
+            [control]="passwordForm.get('password')!"
+          ></app-form-error>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="col-6">
+          <p-float-label variant="on">
+            <p-password
+              formControlName="confirmPassword"
+              [feedback]="false"
+              [toggleMask]="true"
+            />
+            <label>Confirmez le mot de passe</label>
+          </p-float-label>
+          <app-form-error
+            [control]="passwordForm.get('confirmPassword')!"
+          ></app-form-error>
+          <app-form-error [control]="passwordForm"></app-form-error>
+        </div>
+      </div>
+    </div>
     <ng-template #footer>
-      <p-button
-        type="submit"
-        
-        loadingIcon="pi pi-cog"
-        label="Sauver"
-      >
-      <!--TODO : [disabled]="isLoading"
+      <p-button type="submit" loadingIcon="pi pi-cog" label="Sauver">
+        <!--TODO : [disabled]="isLoading"
         [loading]="isLoading" -->
-        
       </p-button>
     </ng-template>
-
   </p-card>
 </form>

@@ -16,4 +16,15 @@ export class CustomValidators {
             return !passwordValid ? {passwordStrength : true} : null;
         }
     }
+
+    static confirmPasswordValidator() {
+        return (control: AbstractControl): ValidationErrors | null => {
+
+            
+            if (!control.value) {
+                return null;
+            }
+            return control.value.password === control.value.confirmPassword ? null : { passwordNoMatch : true }
+        }
+    }
 }

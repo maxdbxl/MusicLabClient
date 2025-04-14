@@ -1,12 +1,27 @@
 @if(control().getError('exist')) {
-    <p>Cette valeur est déjà utilisée</p>
-} 
-
-@if(control().invalid && (control().dirty || control().touched) && control().enabled) {
-    @if(control().getError('required')) {
-        <p>Le champ est requis</p>
-    }
-    @if(control().getError('maxlength')) {
-        <p>Le champ est trop long ({{control().getError('maxlength').actualLength}}/{{control().getError('maxlength').requiredLength}})</p>
-    }
+<p>Cette valeur est déjà utilisée</p>
+} @if(control().invalid && (control().touched) && control().enabled) {
+@if(control().getError('required')) {
+<p>Le champ est requis</p>
+} @if(control().getError('maxlength')) {
+<p>
+  Le champ est trop long ({{ control().getError("maxlength").actualLength }}/{{
+    control().getError("maxlength").requiredLength
+  }})
+</p>
+} @if(control().getError('passwordNoMatch')) {
+<p>Le mot de passe ne correspond pas</p>
+} @if(control().getError('email')) {
+<p>L'adresse email n'est pas valide</p>
+} } @if(control().invalid && (control().dirty || control().touched) &&
+control().enabled) { @if(control().getError('maxlength')) {
+<p>
+  Le champ est trop long ({{ control().getError("maxlength").actualLength }}/{{
+    control().getError("maxlength").requiredLength
+  }})
+</p>
+}
+@if(control().getError('passwordStrength')) {
+  <p>Veuillez utiliser au moins une majuscule, une minuscule et un chiffre </p>
+}
 }

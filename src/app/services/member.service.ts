@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { catchError, map, of } from 'rxjs';
+import { RegisterMember } from '../interfaces/register-member';
+import { AbstractControl } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,8 @@ export class MemberService {
   constructor() { }
 
   register(form: any) {
-    return this.httpClient.post(environment.baseApiUrl + '/member', form);
+    /*Attention : si besoin ailleur==> créer une fonction de mapping avec l'interface*/
+    return this.httpClient.post(environment.baseApiUrl + '/member', { username:form.username, email: form.email, password: form.password.password});
   }
 
   existsEmail(email: string) {
