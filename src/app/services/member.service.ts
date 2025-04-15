@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { catchError, map, of } from 'rxjs';
 import { RegisterMember } from '../interfaces/register-member';
 import { AbstractControl } from '@angular/forms';
+import { Member } from '../models/member.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,18 @@ export class MemberService {
 
   httpClient = inject(HttpClient);
   
-  constructor() { }
+  constructor() { 
+
+    
+  }
 
   register(form: any) {
     /*Attention : si besoin ailleur==> créer une fonction de mapping avec l'interface*/
-    return this.httpClient.post(environment.baseApiUrl + '/member', { username:form.username, email: form.email, password: form.password.password});
+    return this.httpClient.post(environment.baseApiUrl + '/member', form);
+  }
+
+  getAll() {
+    return this.httpClient.get<Member[]>(environment.baseApiUrl + '/member')
   }
 
   existsEmail(email: string) {

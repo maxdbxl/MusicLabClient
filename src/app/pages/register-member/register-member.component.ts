@@ -62,7 +62,10 @@ export class RegisterMemberComponent {
     }
     //Soumettre le formulaire à l'API
     //TODO : Ajouter Loader
-    this.memberService.register({...this.registerForm.value})
+    this.memberService.register({
+      ...this.registerForm.value, 
+      password : this.registerForm.value.password?.password
+    })
     .subscribe({
       next: () => {
         this.messageService.add({severity: 'success', summary: 'La sauvegarde a été effectuée avec succès'});
