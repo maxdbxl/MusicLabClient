@@ -1,1 +1,15 @@
-<p>create-group works!</p>
+<form [formGroup]="createForm" (submit)="submit()">
+  <p-card>
+    <ng-template #title> Créer un groupe </ng-template>
+    <div class="col-6">
+      <p-float-label variant="on">
+        <input pInputText formControlName="name" />
+        <label>Nom du groupe</label>
+      </p-float-label>
+      <app-form-error [control]="createForm.get('name')!"> </app-form-error>
+    </div>
+    <ng-template #footer>
+      <p-button type="submit" loadingIcon="pi pi-cog" label="Sauver"></p-button>
+    </ng-template>
+  </p-card>
+</form>

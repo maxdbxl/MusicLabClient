@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Button } from 'primeng/button';
@@ -9,6 +9,7 @@ import { Card } from 'primeng/card';
 import { Select } from 'primeng/select';
 import { FormErrorComponent } from '../../components/form-error/form-error.component';
 import { GroupService } from '../../services/group.service';
+import { map } from 'rxjs';
 
 @Component({
   imports: [Button, InputText, FloatLabel, Card, ReactiveFormsModule, Select, FormErrorComponent],
@@ -22,7 +23,7 @@ export class CreateGroupComponent {
   groupService = inject(GroupService);
 
   createForm = this.fb.group({
-    name: [null, [Validators.required, Validators.maxLength(100)]]
+    name: [null, [Validators.required, Validators.maxLength(100)], [(control: AbstractControl) => this.groupService.existsGroup(control.value).pipe(map(v => v ? { exist: true} : null))]]
     //TODO : rajouter Head pour vérifier si nom existe déjà dans la DB
   })
 

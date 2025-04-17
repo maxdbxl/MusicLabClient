@@ -3,13 +3,7 @@
 } @if(control().invalid && (control().touched) && control().enabled) {
 @if(control().getError('required')) {
 <p>Le champ est requis</p>
-} @if(control().getError('maxlength')) {
-<p>
-  Le champ est trop long ({{ control().getError("maxlength").actualLength }}/{{
-    control().getError("maxlength").requiredLength
-  }})
-</p>
-} @if(control().getError('passwordNoMatch')) {
+}  @if(control().getError('passwordNoMatch')) {
 <p>Le mot de passe ne correspond pas</p>
 } @if(control().getError('email')) {
 <p>L'adresse email n'est pas valide</p>
