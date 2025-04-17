@@ -1,4 +1,33 @@
-<router-outlet></router-outlet>
+<div class="sidebar">
+  <header class="flex">
+    <h1>MusicLab</h1>
+    <img src="/music_note_icon.svg" alt="music_note_icon">
+    
+  </header>
+  <nav>
+    <ul>
+      <li><a routerLink="/groups" routerLinkActive="active">Groupes</a></li>
+      <li>Projets</li>
+      <li>Rencontres</li>
+      <li>Messagerie</li>
+      <li>Agenda</li>
+    </ul>
+  </nav>
+</div>
+<div class="main-container">
+  <div class="topbar">
+    <ul>
+      <li>Rémy</li>
+      <li><img src="" alt="" /></li>
+      <li><a routerLink="login">Connexion</a></li>
+      <li><a routerLink="logout">Déconnexion</a></li>
+    </ul>
+  </div>
+  <main>
+    <router-outlet></router-outlet>
+    <footer>&copy; 2025 - MD</footer>
+  </main>
+</div>
 
 <p-toast></p-toast>
 <p-confirm-dialog></p-confirm-dialog>

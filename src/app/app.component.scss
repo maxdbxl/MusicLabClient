@@ -1,0 +1,53 @@
+@import "../variables";
+
+:host {
+    min-height: 100vh;
+    display: flex;
+    background-color: #f8f8f8;
+    //color: rgb(0, 0, 0);
+}
+
+
+.sidebar {
+    min-width: 20vw;
+    background-color: $primary;
+    color: white;
+    text-align: center;
+    box-shadow: 8px 0px 20px #c3cad899;
+    header {
+        margin: 2rem;
+        img {
+            margin: 0.5rem;
+        }
+    }
+    ul {
+        li, a {
+            padding: 1rem;
+            color: white;
+        }
+    }
+    
+}
+
+.topbar {
+    min-width: 80vw;
+    min-height: 4rem;
+    background-color: white;
+    box-shadow: 0 8px 20px #dae0eb99;
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        li {
+            margin: 0.5rem;
+        }
+    }
+}
+
+footer {
+    position: fixed;
+    left: 20vw;
+    bottom: 0;
+    width: 80%;
+    text-align: center;
+}

@@ -1,1 +1,28 @@
-<p>display-groups works!</p>
+<div class="main-container">
+  <div class="card flex flex-wrap justify-center gap-4 m-5">
+    <p-iconfield>
+      <input
+        type="text"
+        pInputText
+        placeholder="Rechercher"
+        [(ngModel)]="searchValue"
+        (keydown.enter)="submit()"
+      />
+
+      <p-inputicon styleClass="pi pi-search" (click)="submit()" />
+    </p-iconfield>
+  </div>
+  <div class="grid m-3">
+    @for(group of groupsList; track group.id) {
+    <div class="col-12 md:col-3 sm:col-6">
+      <p-card>
+        <ng-template #title>
+          <h4>{{ group.name }}</h4>
+        </ng-template>
+      </p-card>
+    </div>
+    } @empty {
+    <p>Aucun groupe trouvé</p>
+    }
+  </div>
+</div>

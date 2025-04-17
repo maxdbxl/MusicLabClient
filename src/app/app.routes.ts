@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { CreateGroupComponent } from './pages/create-group/create-group.component';
 
 export const routes: Routes = [
     {path:'member/register', loadComponent : () => import(
@@ -10,5 +11,7 @@ export const routes: Routes = [
     },
     {path:'group/create', loadComponent : () => import(
         './pages/create-group/create-group.component'
-    ).then(c => c.CreateGroupComponent)}
+    ).then(c => c.CreateGroupComponent)},
+    {path: 'groups', loadComponent : () => 
+        import('./pages/display-groups/display-groups.component').then(c => c.DisplayGroupsComponent)}
 ];

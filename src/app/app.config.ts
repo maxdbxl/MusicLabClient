@@ -6,7 +6,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
-import Nora from '@primeng/themes/nora'
+import Material from '@primeng/themes/nora'
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), 
@@ -14,7 +14,7 @@ export const appConfig: ApplicationConfig = {
     MessageService, 
     ConfirmationService, 
     provideAnimations(),
-    providePrimeNG({theme: {preset: Nora}}), 
+    providePrimeNG({theme: {preset: Material}}), 
     provideHttpClient(withInterceptors([]))
   ]
 };
