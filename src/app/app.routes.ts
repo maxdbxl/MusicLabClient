@@ -13,5 +13,9 @@ export const routes: Routes = [
         './pages/create-group/create-group.component'
     ).then(c => c.CreateGroupComponent)},
     {path: 'groups', loadComponent : () => 
-        import('./pages/display-groups/display-groups.component').then(c => c.DisplayGroupsComponent)}
+        import('./pages/display-groups/display-groups.component').then(c => c.DisplayGroupsComponent)},
+    {path: 'group/:id', loadComponent: () =>
+        import('./pages/group-details/group-details.component').then(c => c.GroupDetailsComponent),
+        title: 'Informations Groupe'
+    }
 ];

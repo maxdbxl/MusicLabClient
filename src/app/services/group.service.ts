@@ -21,6 +21,10 @@ export class GroupService {
     return this.httpClient.get<Group[]>(environment.baseApiUrl + '/company')
   }
 
+  FindById(id: number) {
+    return this.httpClient.get<Group>(environment.baseApiUrl + '/company/' + id)
+  }
+
 
   existsGroup(group: string) {
     return this.httpClient.head(environment.baseApiUrl + '/company', {
@@ -30,4 +34,6 @@ export class GroupService {
       catchError(() => of(false))
     )
   }
+
+
 }
