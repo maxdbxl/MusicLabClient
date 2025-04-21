@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { CreateGroupComponent } from './pages/create-group/create-group.component';
+import { CreateProjectComponent } from './pages/create-project/create-project.component';
 
 export const routes: Routes = [
     {path:'member/register', loadComponent : () => import(
@@ -17,5 +18,11 @@ export const routes: Routes = [
     {path: 'group/:id', loadComponent: () =>
         import('./pages/group-details/group-details.component').then(c => c.GroupDetailsComponent),
         title: 'Informations Groupe'
+    },
+    {path: 'projects', loadComponent : () => import ('./pages/display-projects/display-projects.component').then(c => c.DisplayProjectsComponent)},
+    {path: 'project/create', loadComponent : () => import(
+        './pages/create-project/create-project.component'
+    ).then(c => c.CreateProjectComponent)
+
     }
 ];
