@@ -1,1 +1,62 @@
-<p>create-project works!</p>
+<form [formGroup]="createProjectForm" (submit)="submit()">
+  <p-card>
+    <ng-template #title>Créer un projet</ng-template>
+    <div class="col-6">
+      <p-float-label variant="on">
+        <input type="text" pInputText formControlName="name" />
+        <label>Nom du projet</label>
+      </p-float-label>
+      <app-form-error
+        [control]="createProjectForm.get('name')!"
+      ></app-form-error>
+    </div>
+    <div class="col-6">
+      <p-float-label variant="on">
+        <p-select
+          formControlName="companies"
+          styleClass="w-full"
+          [options]="companies"
+          optionLabel="name"
+          optionValue="id"
+          emptyMessage="Aucune"
+        >
+        </p-select>
+        <label>Groupe</label>
+      </p-float-label>
+      <app-form-error
+        [control]="createProjectForm.get('companies')!"
+      ></app-form-error>
+    </div>
+    <div class="col-6">
+      <p-float-label variant="on">
+        <p-datepicker
+          id="on-label"
+          formControlName="startDate"
+          dateFormat="dd.mm.yy"
+        >
+        </p-datepicker>
+        <label>Date de début</label>
+      </p-float-label>
+      <app-form-error
+        [control]="createProjectForm.get('startDate')!"
+      ></app-form-error>
+    </div>
+    <div class="col-6">
+      <p-float-label variant="on">
+        <p-datepicker
+          id="on-label"
+          formControlName="endDate"
+          required="false"
+          dateFormat="dd.mm.yy"
+        ></p-datepicker>
+        <label inputId="on_label">Date de fin</label>
+      </p-float-label>
+      <app-form-error
+        [control]="createProjectForm.get('endDate')!"
+      ></app-form-error>
+    </div>
+    <ng-template #footer>
+      <p-button type="submit" loadingIcon="pi pi-cog" label="Sauver"></p-button>
+    </ng-template>
+  </p-card>
+</form>

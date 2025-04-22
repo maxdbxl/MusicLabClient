@@ -1,13 +1,24 @@
 @if(control().getError('exist')) {
 <p>Cette valeur est déjà utilisée</p>
-} @if(control().invalid && (control().touched) && control().enabled) {
+}
+
+
+@if(control().invalid && (control().touched) && control().enabled) {
 @if(control().getError('required')) {
 <p>Le champ est requis</p>
-}  @if(control().getError('passwordNoMatch')) {
+}  
+@if(control().getError('passwordNoMatch')) {
 <p>Le mot de passe ne correspond pas</p>
-} @if(control().getError('email')) {
+} 
+@if(control().getError('email')) {
 <p>L'adresse email n'est pas valide</p>
-} } @if(control().invalid && (control().dirty || control().touched) &&
+} 
+@if(control().getError('endBeforeStart')) {
+  <p>La date de fin doit être postérieure à la date de début</p>
+}
+
+} 
+@if(control().invalid && (control().dirty || control().touched) &&
 control().enabled) { @if(control().getError('maxlength')) {
 <p>
   Le champ est trop long ({{ control().getError("maxlength").actualLength }}/{{

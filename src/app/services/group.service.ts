@@ -25,6 +25,10 @@ export class GroupService {
     return this.httpClient.get<Group>(environment.baseApiUrl + '/company/' + id)
   }
 
+  getAllGroupsForMemberId(id: number) {
+    return this.httpClient.get<Group[]>(environment.baseApiUrl + '/company', {params: {memberId: id}})
+  }
+
 
   existsGroup(group: string) {
     return this.httpClient.head(environment.baseApiUrl + '/company', {

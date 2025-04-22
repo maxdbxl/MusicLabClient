@@ -27,4 +27,15 @@ export class CustomValidators {
             return control.value.password === control.value.confirmPassword ? null : { passwordNoMatch : true }
         }
     }
+
+
+    static startDateBeforeEndDateValidator(startDateControl: AbstractControl) {
+        return (control: AbstractControl): ValidationErrors | null => {
+            let startDate = startDateControl.value;
+            let endDate = control.value;
+            startDate = startDate ?? new Date();
+          
+            return (startDate < endDate) ? null : { endBeforeStart : { startDate }}
+        }
+    }
 }
