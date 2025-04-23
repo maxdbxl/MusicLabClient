@@ -7,6 +7,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
 import Material from '@primeng/themes/nora'
+import { tokenInterceptor } from './interceptors/token.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), 
@@ -15,6 +16,6 @@ export const appConfig: ApplicationConfig = {
     ConfirmationService, 
     provideAnimations(),
     providePrimeNG({theme: {preset: Material}}), 
-    provideHttpClient(withInterceptors([]))
+    provideHttpClient(withInterceptors([tokenInterceptor]))
   ]
 };

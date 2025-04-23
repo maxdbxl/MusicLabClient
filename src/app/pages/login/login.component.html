@@ -1,0 +1,20 @@
+<form [formGroup]="fg" (ngSubmit)="login()">
+
+    <div class="input-group">
+        <p-float-label variant="on">
+            <input type="text" pInputText formControlName="username">
+            <label>Login</label>
+        </p-float-label>
+    </div>
+    <div class="input-group">
+        <p-float-label variant="on">
+            <input type="password" pInputText formControlName="password">
+            <label>Mot de passe</label>
+        </p-float-label>
+    </div>
+    <div class="input-group">
+        <p-button type="submit" label="Se connecter" [disabled]="fg.invalid">
+
+        </p-button>
+    </div>
+</form>
