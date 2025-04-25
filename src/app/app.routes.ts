@@ -23,6 +23,8 @@ export const routes: Routes = [
     {path: 'project/create', loadComponent : () => import(
         './pages/create-project/create-project.component'
     ).then(c => c.CreateProjectComponent)
-
+    },
+    {path: 'login', loadComponent : () => import ('./pages/login/login.component')
+        .then(c => c.LoginComponent)
     }
 ];
