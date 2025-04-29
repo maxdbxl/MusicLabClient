@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-agenda',
@@ -12,9 +13,14 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 })
 export class AgendaComponent {
 
-  calendarOptions: CalendarOptions = {
+  private eventService = inject(EventService)
+
+  calendarOptions: CalendarOptions & {schedulerLicenseKey: string} = {
     initialView: 'dayGridMonth',
-    plugins: [dayGridPlugin]
+    plugins: [dayGridPlugin],
+    schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives'
   }
+
+  
 
 }
