@@ -26,5 +26,8 @@ export const routes: Routes = [
     },
     {path: 'login', loadComponent : () => import ('./pages/login/login.component')
         .then(c => c.LoginComponent)
+    },
+    {path: 'agenda', loadComponent : () => import ('./pages/agenda/agenda.component')
+        .then(c => c.AgendaComponent)
     }
 ];

@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import { Toast } from 'primeng/toast';
+import { SessionService } from './services/session.service';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +13,12 @@ import { Toast } from 'primeng/toast';
 })
 export class AppComponent {
   title = 'MusicLabClient';
+  httpClient = inject(HttpClient);
+  sessionService = inject(SessionService);
+  router = inject(Router);
+
+  logout() {
+    this.sessionService.clear();
+    this.router.navigate(['login']);
+  }
 }

@@ -34,5 +34,6 @@ export class SessionService {
 
   clear() {
     this.session.set({});
+    localStorage.removeItem(this.SESSION_KEY);
   }
 }

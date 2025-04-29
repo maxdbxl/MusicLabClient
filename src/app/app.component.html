@@ -10,7 +10,7 @@
       <li><a routerLink="/projects" routerLinkActive="active">Projets</a></li>
       <li>Rencontres</li>
       <li>Messagerie</li>
-      <li>Agenda</li>
+      <li><a routerLink="/agenda" routerLinkActive="active">Agenda</a></li>
     </ul>
   </nav>
 </div>
@@ -19,8 +19,13 @@
     <ul>
       <li>Rémy</li>
       <li><img src="" alt="" /></li>
-      <li><a routerLink="login">Connexion</a></li>
-      <li><a routerLink="logout">Déconnexion</a></li>
+      @if(sessionService.session().isAuthenticated) {
+        <li><button (click)="logout()">Déconnexion</button></li>
+      } @else {
+        <li><a routerLink="login">Connexion</a></li>
+      }
+      
+      
     </ul>
   </div>
   <main>
