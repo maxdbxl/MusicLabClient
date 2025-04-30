@@ -11,9 +11,9 @@
     {{ event.name }}
   </ng-template>
   <ng-template #subtitle>
-    {{ event.startDate }} - {{ event.endDate }}
+    {{ event.startDate | date : 'H:mm' }} - {{ event.endDate | date: 'H:mm' }}
   </ng-template>
-  <p>Lieu</p>
+  <p>{{event.location}}</p>
   <div
     [ngStyle]="{
       background: event.eventType | event : 'color',
@@ -24,7 +24,7 @@
   ></div>
   <p>{{ event.eventType | event : "label" }}</p>
   <ng-template #footer>
-    <div>Description</div>
+    <div>{{event.description}}</div>
   </ng-template>
 </p-card>
 }
