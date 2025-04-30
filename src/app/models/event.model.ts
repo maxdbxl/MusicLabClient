@@ -6,5 +6,6 @@ export interface EventModel {
     startDate: string;
     endDate: string;
     isConfirmed: boolean;
-    type: 'Répétition' | 'Représentation' | 'Réunion orga' | 'Réunion logistique' | 'Temps perso' | 'Autres'
+    eventType: 
+    'Repetition' | 'Representation' | 'Réunion orga' | 'Réunion logistique' | 'Temps perso' | 'Autres'
 }

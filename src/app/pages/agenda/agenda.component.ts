@@ -9,19 +9,22 @@ import { EventService } from '../../services/event.service';
 import frLocale from '@fullcalendar/core/locales/fr';
 import { Dialog } from 'primeng/dialog';
 import { ConfirmDialog } from 'primeng/confirmdialog';
+import { EventDetailsComponent } from '../../components/event-details/event-details.component';
+import { DialogService } from 'primeng/dynamicdialog';
+import { EventModel } from '../../models/event.model';
+import { EVENT_TYPE } from '../../constants/event-type.constants';
 
 
 @Component({
   selector: 'app-agenda',
-  imports: [CommonModule, FullCalendarModule, Dialog, ConfirmDialog],
+  imports: [CommonModule, FullCalendarModule,  EventDetailsComponent],
   templateUrl: './agenda.component.html',
   styleUrl: './agenda.component.scss'
 })
 export class AgendaComponent {
 
   private eventService = inject(EventService);
-  event: any;
-  popupVisible: boolean = false;
+ private dialogService = inject(DialogService);
   events! : EventInput[];
 
   constructor() {
@@ -51,47 +54,56 @@ export class AgendaComponent {
           title: e.name,
           start: new Date(e.startDate),
           end: new Date(e.endDate),
-          eventColor: this.getColor(e.type),
+          color: this.getColor(e.eventType),
           extendedProps: {
             description: e.description,
             location: e.location,
             isConfirmed: e.isConfirmed,
-            type: e.type
+            type: e.eventType
           }
         }));
       }
     })
   }
 
+
+
 private getColor(type: string) {
-  switch (type) {
-    case 'Repetition' : return '#e89415';
-    case 'Representation' : return '#e89415';
-    case 'OrganisationalMeeting' : return '#e89415';
-    case 'LogisticalMeeting' : return '#e89415';
-    case 'PersonalEvent' : return '#e89415';
-    case 'Other' : return '#e89415';
-    default: return 'green'
-  }
+  console.log(type);
+  return EVENT_TYPE[type].color
 }
 
+// case 'Repetition' : return '#e89415';
+// case 'Representation' : return '#e84d15';
+// case '' : return '#aef26b';
+// case '' : return '#42b5e3';
+// case '' : return '#b842e3';
+// case '' : return '#9c5beb';
+// default: return 'blue'
+
 private eventClickHandler(e: EventClickArg) {
-  this.event = {
+  const event : EventModel= {
     id: e.event.id,
-    title: e.event.title,
+    name: e.event.title,
     description: e.event.extendedProps['description'],
-    startDate: e.event.start,
-    endDate: e.event.end,
-    type: e.event.extendedProps['type'],
+    startDate: e.event.start?.toISOString()!,
+    endDate: e.event.end?.toISOString()!,
+    eventType: e.event.extendedProps['type'],
     location: e.event.extendedProps['location'],
     isConfirmed: e.event.extendedProps['isConfirmed']
   };
-  this.popupVisible = true;
+  this.dialogService.open(EventDetailsComponent, 
+    {
+      modal: true,
+      dismissableMask: true,
+      style: {width: '25rem', background: 'transparent', boxShadow: 'unset'},
+      data: event,
+      
+      showHeader: false
+  })
+
 }
 
-onClose() {
-  this.popupVisible = false;
-  this.event = null;
-}
+
 
 }

@@ -1,0 +1,30 @@
+@if(event) {<p-card [style]="{ overflow: 'hidden' }">
+  <ng-template #header>
+    <img
+      alt="Evénement"
+      class="w-full"
+      [src]="event.eventType | event : 'bgImg'"
+    />
+  </ng-template>
+  <ng-template #title>
+    <img src="" alt="" />
+    {{ event.name }}
+  </ng-template>
+  <ng-template #subtitle>
+    {{ event.startDate }} - {{ event.endDate }}
+  </ng-template>
+  <p>Lieu</p>
+  <div
+    [ngStyle]="{
+      background: event.eventType | event : 'color',
+      height: '10px',
+      width: '10px',
+      borderRadius: '50%'
+    }"
+  ></div>
+  <p>{{ event.eventType | event : "label" }}</p>
+  <ng-template #footer>
+    <div>Description</div>
+  </ng-template>
+</p-card>
+}

@@ -2,18 +2,19 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService,  } from 'primeng/api';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
 import Material from '@primeng/themes/nora'
 import { tokenInterceptor } from './interceptors/token.interceptor';
+import { DialogService, DynamicDialogConfig } from 'primeng/dynamicdialog'
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes),
     MessageService, 
-    ConfirmationService, 
+    ConfirmationService, DialogService, DynamicDialogConfig,
     provideAnimations(),
     providePrimeNG({theme: {preset: Material}}), 
     provideHttpClient(withInterceptors([tokenInterceptor]))
