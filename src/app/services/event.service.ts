@@ -12,7 +12,7 @@ export class EventService {
   constructor() { }
 
   getAll() {
-    return this.httpClient.get<EventModel[]>('http://localhost:5045/meetings')
+    return this.httpClient.get<EventModel[]>('http://localhost:5045/api/meeting', { headers: {Authorization: "Bearer " + localStorage.getItem("TOKEN")}})
   }
 
   add() {
