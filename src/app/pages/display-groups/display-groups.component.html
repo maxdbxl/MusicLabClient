@@ -14,8 +14,8 @@
   </div>
   <div class="grid m-3">
     @for(group of groupsList; track group.id) {
-    <div class="col-12 md:col-3 sm:col-6">
-      <p-card>
+    <div class="col-12 md:col-3 sm:col-6" >
+      <p-card (click)="getDetails(group.id)" class="clickable-card">
         <ng-template #title>
           <h4>{{ group.name }}</h4>
         </ng-template>

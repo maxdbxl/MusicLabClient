@@ -5,7 +5,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 import { GroupService } from '../../services/group.service';
 import { MessageService } from 'primeng/api';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Group } from '../../models/group.model';
 import { Card } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
@@ -13,7 +13,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { CreateGroupComponent } from '../create-group/create-group.component';
 
 @Component({
-  imports: [IconFieldModule, InputIconModule, FormsModule, InputTextModule, Card, ButtonModule, CreateGroupComponent],
+  imports: [IconFieldModule, InputIconModule, FormsModule, InputTextModule, Card, ButtonModule, CreateGroupComponent, RouterModule],
   templateUrl: './display-groups.component.html',
   styleUrl: './display-groups.component.scss'
 })
@@ -44,4 +44,7 @@ submit() {
   console.log(this.searchValue);
 }
 
+getDetails(id: number) {
+  this.router.navigate(['/group/', id]);
+}
 }
