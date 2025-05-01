@@ -25,7 +25,7 @@ export class CreateGroupComponent {
   createForm = this.fb.group({
     name: [null, [Validators.required, Validators.maxLength(100)], [(control: AbstractControl) => this.groupService.existsGroup(control.value).pipe(map(v => v ? { exist: true} : null))]]
     //TODO : rajouter Head pour vérifier si nom existe déjà dans la DB
-  })
+  });
 
   submit() {
     if (this.createForm.invalid) {
@@ -36,7 +36,7 @@ export class CreateGroupComponent {
     .subscribe({
       next: () => {
         this.messageService.add({severity: 'success', summary: 'La sauvegarde a été effectuée avec succès'});
-        this.router.navigate(['/']);
+        this.router.navigate(['/groups']);
         //TODO : ajouter loader
       },
       error: () => {

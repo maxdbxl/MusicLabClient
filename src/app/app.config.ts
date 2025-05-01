@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withRouterConfig } from '@angular/router';
 
 import { routes } from './app.routes';
 import { ConfirmationService, MessageService,  } from 'primeng/api';
@@ -12,7 +12,10 @@ import { DialogService, DynamicDialogConfig } from 'primeng/dynamicdialog'
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), 
-    provideRouter(routes),
+    provideRouter(routes, withRouterConfig({
+      paramsInheritanceStrategy: 'always',
+      onSameUrlNavigation: 'reload'
+    })),
     MessageService, 
     ConfirmationService, DialogService, DynamicDialogConfig,
     provideAnimations(),

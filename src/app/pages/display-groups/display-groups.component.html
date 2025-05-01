@@ -8,9 +8,9 @@
         [(ngModel)]="searchValue"
         (keydown.enter)="submit()"
       />
-
       <p-inputicon styleClass="pi pi-search" (click)="submit()" />
     </p-iconfield>
+    <p-button label="Créer un nouveau groupe" icon="pi pi-plus" iconPos="right" (click)="addGroupClick()"></p-button>
   </div>
   <div class="grid m-3">
     @for(group of groupsList; track group.id) {

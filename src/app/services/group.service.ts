@@ -30,9 +30,9 @@ export class GroupService {
   }
 
 
-  existsGroup(group: string) {
+  existsGroup(groupName: string) {
     return this.httpClient.head(environment.baseApiUrl + '/company', {
-      params: { group }
+      params: { groupName }
     }).pipe(
       map(() => true),
       catchError(() => of(false))
