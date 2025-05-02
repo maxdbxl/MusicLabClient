@@ -3,4 +3,7 @@
     <p-card>
         {{groupToDisplay?.name}}
     </p-card>
+    @for(member of groupToDisplay?.members; track member.id) {
+<p>{{member.username}}</p>
+    }
 </div>

@@ -28,6 +28,7 @@ searchValue : string = "";
 groupsList: Group[] = []
 
   constructor() {
+    
     this.groupService.getAll().subscribe(result => this.groupsList = result);
   }
 
