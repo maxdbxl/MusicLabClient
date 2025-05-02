@@ -38,7 +38,7 @@ constructor() {
     this.createProjectForm.controls['endDate'].updateValueAndValidity()
   });
   
-   this.groupService.getAllGroupsForMemberId(this.sessionService.UserId).subscribe(result => this.companies = result);
+   this.groupService.getAllGroupsForMemberId(this.sessionService.session().id).subscribe(result => this.companies = result);
    
 }
 
@@ -56,7 +56,8 @@ submit() {
     return;
   }
   //TODO : ajouter Loader
-  this.projectService.create(this.createProjectForm.value)
+  
+  this.projectService.create({...this.createProjectForm.value, companies: [this.createProjectForm.value.companies]})
   .subscribe(
     {
       next: () => {

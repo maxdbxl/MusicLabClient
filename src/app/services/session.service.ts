@@ -15,7 +15,7 @@ export class SessionService {
     }
   }
   
-  UserId = parseInt(localStorage.getItem("UserId") ?? "-1")
+  // UserId = parseInt(localStorage.getItem("UserId") ?? "-1")
 
   session = signal<any>({});
 
