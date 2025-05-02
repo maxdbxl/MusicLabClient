@@ -1,0 +1,29 @@
+<form [formGroup]="createMeetingForm" (submit)="submit()">
+  <p-card>
+    <ng-template #title> Créer une rencontre </ng-template>
+    <div class="col-6">
+      <p-float-label variant="on">
+        <input type="text" pInputText formControlName="name" />
+        <label>Nom de la rencontre</label>
+      </p-float-label>
+    </div>
+    <div class="col-6">
+      <p-float-label variant="on">
+        <input type="text" />
+        <label>Description</label>
+      </p-float-label>
+    </div>
+    <div class="col-6">
+      <p-float-label variant="on"><input type="text" /></p-float-label>
+    </div>
+    <div class="col-6">
+      <p-float-label variant="on"><input type="text" /></p-float-label>
+    </div>
+    <div class="col-6">
+      <p-float-label variant="on"><input type="text" /></p-float-label>
+    </div>
+    <div class="col-6">
+      <p-float-label variant="on"><input type="text" /></p-float-label>
+    </div>
+  </p-card>
+</form>

@@ -49,7 +49,7 @@ createProjectForm = this.fb.group({
   companies: [null, [Validators.required]],
   startDate: this.startDate,
   endDate: [null, [Validators.required, CustomValidators.startDateBeforeEndDateValidator(this.startDate)]]
-})
+});
 
 submit() {
   if (this.createProjectForm.invalid) {

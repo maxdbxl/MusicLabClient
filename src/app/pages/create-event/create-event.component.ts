@@ -1,11 +1,70 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { EventService } from '../../services/event.service';
+import { SessionService } from '../../services/session.service';
+import { CustomValidators } from '../../validators/custom.validators';
+import { Button } from 'primeng/button';
+import { InputText } from 'primeng/inputtext';
+import { FloatLabel } from 'primeng/floatlabel';
+import { Card } from 'primeng/card';
+import { Fieldset } from 'primeng/fieldset';
+import { Select } from 'primeng/select';
+import { DatePicker } from 'primeng/datepicker';
+import { TextareaModule } from 'primeng/textarea';
 
 @Component({
   selector: 'app-create-event',
-  imports: [],
+  imports: [Button, InputText, FloatLabel, Card, Fieldset, ReactiveFormsModule, Select, DatePicker, TextareaModule],
   templateUrl: './create-event.component.html',
   styleUrl: './create-event.component.scss'
 })
 export class CreateEventComponent {
 
+  fb = inject(FormBuilder);
+  router = inject(Router);
+  messageService = inject(MessageService);
+  eventService = inject(EventService);
+  sessionService = inject(SessionService);
+
+constructor() {
+  this.createMeetingForm.controls['startTime'].valueChanges.subscribe(v => {
+    this.createMeetingForm.controls['endTime'].updateValueAndValidity()
+  });
+
 }
+
+
+  startTime = this.fb.control(null, {validators: [Validators.required]})
+
+createMeetingForm = this.fb.group({
+  name: [null, [Validators.required, Validators.maxLength(350)]],
+  description: [null, [Validators.required, Validators.maxLength(1500)]],
+  location: [null, [Validators.required]],
+  startTime: this.startTime,
+  endTime: [null, [Validators.required, CustomValidators.startDateBeforeEndDateValidator]],
+  eventType: [null, [Validators.required]],
+  membersList: [null, [Validators.required]]
+  });
+
+  submit() {
+    if (this.createMeetingForm.invalid) {
+      return;
+    }
+
+    this.eventService.create(this.createMeetingForm.value)
+    .subscribe({
+      next: () => {
+        this.messageService.add({severity: 'success', summary: 'La sauvegarde a été effectuée avec succès'});
+        this.router.navigate(['/']);
+      },
+      error: () => {
+        this.messageService.add({severity: 'error', summary: 'La sauvegarde a échoué'});
+      }
+    })
+  }
+
+
+}
+
