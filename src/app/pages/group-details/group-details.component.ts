@@ -17,6 +17,7 @@ export class GroupDetailsComponent {
   route = inject(ActivatedRoute);
   router = inject(Router);
   groupToDisplay : Group | null = null!;
+  
 
   constructor() {
     const groupId = Number(this.route.snapshot.params['id']);

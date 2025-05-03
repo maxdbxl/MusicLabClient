@@ -6,4 +6,7 @@
     @for(member of groupToDisplay?.members; track member.id) {
 <p>{{member.username}}</p>
     }
+    @for(project of groupToDisplay?.projects; track project.id) {
+        <p>{{project.name}}</p>
+    }
 </div>
