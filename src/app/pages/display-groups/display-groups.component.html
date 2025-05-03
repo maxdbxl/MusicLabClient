@@ -15,10 +15,19 @@
   <div class="grid m-3">
     @for(group of groupsList; track group.id) {
     <div class="col-12 md:col-3 sm:col-6" >
-      <p-card (click)="getDetails(group.id)" class="clickable-card">
+      <p-card (click)="getDetails(group.id)" class="clickable-card h-full">
+        
         <ng-template #title>
           <h4>{{ group.name }}</h4>
         </ng-template>
+        <ng-template #content>
+          <div class="flex flex-column align-items-center justify-content-center text-center h-full p-3"><p-avatar icon="pi pi-warehouse"
+          class="mr2"
+          size="large"
+          ></p-avatar></div>
+          
+        </ng-template>
+      
       </p-card>
     </div>
     } @empty {

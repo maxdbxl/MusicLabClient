@@ -11,9 +11,10 @@ import { Card } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { DialogService } from 'primeng/dynamicdialog';
 import { CreateGroupComponent } from '../create-group/create-group.component';
+import { AvatarModule } from 'primeng/avatar'
 
 @Component({
-  imports: [IconFieldModule, InputIconModule, FormsModule, InputTextModule, Card, ButtonModule, CreateGroupComponent, RouterModule],
+  imports: [IconFieldModule, InputIconModule, FormsModule, InputTextModule, Card, ButtonModule, CreateGroupComponent, RouterModule, AvatarModule ],
   templateUrl: './display-groups.component.html',
   styleUrl: './display-groups.component.scss'
 })
