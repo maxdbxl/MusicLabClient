@@ -3,27 +3,110 @@
     <ng-template #title> Créer une rencontre </ng-template>
     <div class="col-6">
       <p-float-label variant="on">
-        <input type="text" pInputText formControlName="name" />
+        <input
+          type="text"
+          styleClass="w-full"
+          pInputText
+          formControlName="name"
+        />
         <label>Nom de la rencontre</label>
       </p-float-label>
+      <app-form-error
+        [control]="createMeetingForm.get('name')!"
+      ></app-form-error>
     </div>
     <div class="col-6">
       <p-float-label variant="on">
-        <input type="text" />
+        <textarea
+          rows="5"
+          cols="30"
+          pTextarea
+          [autoResize]="true"
+          formControlName="description"
+          styleClass="w-full"
+        ></textarea>
         <label>Description</label>
       </p-float-label>
+      <app-form-error
+        [control]="createMeetingForm.get('description')!"
+      ></app-form-error>
     </div>
     <div class="col-6">
-      <p-float-label variant="on"><input type="text" /></p-float-label>
+      <p-float-label variant="on">
+        <input
+          type="text"
+          styleClass="w-full"
+          pInputText
+          formControlName="location"
+        />
+        <label>Lieu</label>
+      </p-float-label>
+      <app-form-error
+        [control]="createMeetingForm.get('location')!"
+      ></app-form-error>
     </div>
     <div class="col-6">
-      <p-float-label variant="on"><input type="text" /></p-float-label>
+      <p-float-label variant="on">
+        <p-datepicker
+          formControlName="startTime"
+          styleClass="w-full"
+          dateFormat="dd.mm.yy"
+          inputId="calendar-24h"
+          [showTime]="true"
+          [firstDayOfWeek]="1"
+        ></p-datepicker>
+        <label>Heure de début</label>
+      </p-float-label>
+      <app-form-error
+        [control]="createMeetingForm.get('startTime')!"
+      ></app-form-error>
     </div>
     <div class="col-6">
-      <p-float-label variant="on"><input type="text" /></p-float-label>
+      <p-float-label variant="on">
+        <p-datepicker
+          formControlName="endTime"
+          styleClass="w-full"
+          inputId="calendar-24h"
+          dateFormat="dd.mm.yy"
+          [showTime]="true"
+        ></p-datepicker>
+        <label>Heure de fin</label>
+      </p-float-label>
+      <app-form-error
+        [control]="createMeetingForm.get('endTime')!"
+      ></app-form-error>
     </div>
     <div class="col-6">
-      <p-float-label variant="on"><input type="text" /></p-float-label>
+      <p-float-label variant="on">
+        <p-select
+          formControlName="eventType"
+          styleClass="w-full"
+          [options]="eventTypeOptions"
+          optionLabel="label"
+          optionValue="value"
+          emptyMessage="Aucun"
+        ></p-select>
+      </p-float-label>
+      <app-form-error
+        [control]="createMeetingForm.get('eventType')!"
+      ></app-form-error>
     </div>
+    <div class="col-6">
+      <p-float-label>
+        <p-multiselect
+          [options]="participants"
+          formControlName="membersList"
+          optionLabel="username"
+          optionValue="id"
+          styleClass="w-full md:w-80"
+        />
+      </p-float-label>
+      <app-form-error
+        [control]="createMeetingForm.get('membersList')!"
+      ></app-form-error>
+    </div>
+    <ng-template #footer>
+      <p-button type="submit" loadingIcon="pi pi-cog" label="Sauver"></p-button>
+    </ng-template>
   </p-card>
 </form>

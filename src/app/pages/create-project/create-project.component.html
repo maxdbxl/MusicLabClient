@@ -19,7 +19,6 @@
           optionLabel="name"
           optionValue="id"
           emptyMessage="Aucune"
-          
         >
         </p-select>
         <label>Groupe</label>
@@ -34,6 +33,7 @@
           id="on-label"
           formControlName="startDate"
           dateFormat="dd.mm.yy"
+          [firstDayOfWeek]="1"
         >
         </p-datepicker>
         <label>Date de début</label>
@@ -49,6 +49,7 @@
           formControlName="endDate"
           required="false"
           dateFormat="dd.mm.yy"
+          [firstDayOfWeek]="1"
         ></p-datepicker>
         <label inputId="on_label">Date de fin</label>
       </p-float-label>

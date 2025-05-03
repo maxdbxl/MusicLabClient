@@ -30,5 +30,8 @@ export const routes: Routes = [
     },
     {path: 'agenda', loadComponent : () => import ('./pages/agenda/agenda.component')
         .then(c => c.AgendaComponent)
+    },
+    {path: 'event/create', loadComponent: () => import ('./pages/create-event/create-event.component')
+        .then(c => c.CreateEventComponent)
     }
 ];

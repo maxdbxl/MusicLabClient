@@ -27,6 +27,11 @@ export class MemberService {
     return this.httpClient.get<Member[]>(environment.baseApiUrl + '/member')
   }
 
+  //Non fonctionnel dans l'API pour le moment (à corriger)
+  getAllMembersForGroupId(id: number) {
+    return this.httpClient.get<any[]>(environment.baseApiUrl + '/group', {params: {groupId: id}})
+  }
+
   existsEmail(email: string) {
     return this.httpClient.head(environment.baseApiUrl + '/member', {
       params: { email }

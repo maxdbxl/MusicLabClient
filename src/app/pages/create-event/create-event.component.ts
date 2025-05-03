@@ -13,10 +13,15 @@ import { Fieldset } from 'primeng/fieldset';
 import { Select } from 'primeng/select';
 import { DatePicker } from 'primeng/datepicker';
 import { TextareaModule } from 'primeng/textarea';
+import { EVENT_TYPE } from '../../constants/event-type.constants';
+import { EVENT_TYPE_OPTIONS } from '../../constants/event-type-options.constant';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { MemberService } from '../../services/member.service';
+import { FormErrorComponent } from '../../components/form-error/form-error.component';
 
 @Component({
   selector: 'app-create-event',
-  imports: [Button, InputText, FloatLabel, Card, Fieldset, ReactiveFormsModule, Select, DatePicker, TextareaModule],
+  imports: [Button, InputText, FloatLabel, Card, Fieldset, ReactiveFormsModule, Select, DatePicker, TextareaModule,MultiSelectModule, FormErrorComponent],
   templateUrl: './create-event.component.html',
   styleUrl: './create-event.component.scss'
 })
@@ -26,13 +31,19 @@ export class CreateEventComponent {
   router = inject(Router);
   messageService = inject(MessageService);
   eventService = inject(EventService);
+  memberService = inject(MemberService);
   sessionService = inject(SessionService);
+
+  eventTypeOptions = EVENT_TYPE_OPTIONS;
+  participants : any[] = [];
 
 constructor() {
   this.createMeetingForm.controls['startTime'].valueChanges.subscribe(v => {
     this.createMeetingForm.controls['endTime'].updateValueAndValidity()
   });
 
+  this.memberService.getAll().subscribe(result => this.participants = result);
+  console.log(this.participants);
 }
 
 
