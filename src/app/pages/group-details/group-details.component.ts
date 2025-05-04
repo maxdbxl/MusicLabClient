@@ -5,9 +5,10 @@ import { GroupService } from '../../services/group.service';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { Group } from '../../models/group.model';
+import { TableModule } from 'primeng/table';
 
 @Component({
-  imports: [RouterLink, CommonModule, CardModule, ButtonModule],
+  imports: [RouterLink, CommonModule, CardModule, ButtonModule, TableModule ],
   templateUrl: './group-details.component.html',
   styleUrl: './group-details.component.scss'
 })
@@ -22,6 +23,7 @@ export class GroupDetailsComponent {
   constructor() {
     const groupId = Number(this.route.snapshot.params['id']);
     this.groupService.FindById(groupId).subscribe(result => this.groupToDisplay = result);
+    console.log(this.groupToDisplay);
   }
 
   

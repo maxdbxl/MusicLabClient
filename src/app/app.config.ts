@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, LOCALE_ID, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter, withRouterConfig } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -20,6 +20,7 @@ export const appConfig: ApplicationConfig = {
     ConfirmationService, DialogService, DynamicDialogConfig,
     provideAnimations(),
     providePrimeNG({theme: {preset: Material}}), 
-    provideHttpClient(withInterceptors([tokenInterceptor]))
+    provideHttpClient(withInterceptors([tokenInterceptor])),
+    {provide: LOCALE_ID, useValue: 'fr-FR'}
   ]
 };
