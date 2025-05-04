@@ -8,10 +8,11 @@ import { FloatLabel } from 'primeng/floatlabel';
 import { InputText } from 'primeng/inputtext';
 import { SessionService } from '../../services/session.service';
 import { environment } from '../../../environments/environment';
+import { Card } from 'primeng/card';
 
 
 @Component({
-  imports: [Button, InputText, FloatLabel, ReactiveFormsModule],
+  imports: [Button, InputText, FloatLabel, ReactiveFormsModule, Card],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

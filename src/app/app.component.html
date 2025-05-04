@@ -7,7 +7,7 @@
   <nav>
     <ul>
       <li><a routerLink="/groups" routerLinkActive="active">Groupes</a></li>
-      <li><a routerLink="/projects" routerLinkActive="active">Projets</a></li>
+      <li><a routerLink="/project/create" routerLinkActive="active">Projets</a></li>
       <li>Rencontres</li>
       <li>Messagerie</li>
       <li><a routerLink="/agenda" routerLinkActive="active">Agenda</a></li>
@@ -16,7 +16,21 @@
 </div>
 <div class="main-container">
   <div class="topbar">
-    <ul>
+    <p-card>
+      <p-menubar [model]="items"> 
+        <ng-template #end>
+          <div class="flex items-center gap-2">
+            @if(sessionService.session().isAuthenticated) {
+              <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" /><p-button (click)="logout()">Déconnexion</p-button>
+            } @else {
+              <p-button routerLink="login">Connexion</p-button>
+            }
+              
+          </div>
+      </ng-template>
+      </p-menubar>
+  </p-card>
+    <!-- <ul>
       <li>Rémy</li>
       <li><img src="" alt="" /></li>
       @if(sessionService.session().isAuthenticated) {
@@ -26,7 +40,7 @@
       }
       
       
-    </ul>
+    </ul> -->
   </div>
   <main>
     <app-event-details></app-event-details>

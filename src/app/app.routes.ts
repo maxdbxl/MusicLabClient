@@ -37,6 +37,9 @@ export const routes: Routes = [
     },
     {path: 'project/:id', loadComponent: () => import ('./pages/project-details/project-details.component').then(c => c.ProjectDetailsComponent)
     },
-    {path: 'event/:id/confirm', loadComponent: () => import ('./pages/event-participation/event-participation.component').then(c => c.EventParticipationComponent)}
+    {path: 'event/:id/confirm', loadComponent: () => import ('./pages/event-participation/event-participation.component').then(c => c.EventParticipationComponent)},
+    {path: '', loadComponent : () => import ('./pages/agenda/agenda.component')
+        .then(c => c.AgendaComponent)
+    },
     
 ];
