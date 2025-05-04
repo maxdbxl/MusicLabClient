@@ -39,13 +39,27 @@
                         <th>Nom</th>
                         <th>Email</th>
                         <th>Disponibilité</th>
+                        <th>Confirmer</th>
                     </tr>
                 </ng-template>
                 <ng-template #body let-invitation>
                     <tr>
                         <td>{{invitation.member.username}}</td>
                         <td>{{invitation.member.email}}</td>
-                        <td>{{invitation.availability}}</td>
+                        <td> 
+                            
+                                <p-tag *ngIf="invitation.availability === 'Pending'" value="En attente" severity="warn" ></p-tag>
+                                <p-tag *ngIf="invitation.availability === 'Available'" value="Disponible" severity="success" ></p-tag>
+                                <p-tag *ngIf="invitation.availability === 'Unavailable'" value="Non disponible" severity="danger" ></p-tag>
+                            
+                        <!-- <p-tag  ngIf="invitation.availability === 'Available'" value="Disponible" severity="success" /> -->
+                    
+                    </td>
+                    <td>
+                        <div *ngIf="invitation.member.id === loggedMemberId"><p-button label="Disponible" icon="pi pi-check" severity="success" size="small" (onClick)="confirmAvailability(invitation.member.id, invitation.meetingId, 'Available')"></p-button>
+                        <p-button label="Non disponible" icon="pi pi-times" severity="danger" size="small" (onClick)="confirmUnavailability(invitation.member.id, invitation.meetingId, 'Unavailable')"></p-button></div>
+                        
+                    </td>
                     </tr>
                 </ng-template>
                 </p-table>

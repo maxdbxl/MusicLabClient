@@ -21,6 +21,13 @@ export class EventService {
     return this.httpClient.get<InvitationModel[]>(environment.baseApiUrl + '/member', {params: {meetingId: id}})
   }
 
+  changeAvailability(memberId: number, meetingId: number, availability: string) {
+    return this.httpClient.patch(environment.baseApiUrl + '/member', {memberId, 
+      meetingId, 
+      availability}
+    )};
+  
+
   create(form: any) {
     return this.httpClient.post(environment.baseApiUrl + '/meeting', form);
   }
