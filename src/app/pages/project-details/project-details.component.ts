@@ -23,7 +23,7 @@ private dialogService = inject(DialogService);
 route = inject(ActivatedRoute);
 router = inject(Router);
 
-eventsToDisplay: EventModel[] = []
+eventsToDisplay: EventModel[] = [];
 
 constructor() {
   const projectId = Number(this.route.snapshot.params['id']);
