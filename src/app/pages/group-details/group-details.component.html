@@ -1,70 +1,78 @@
 <div class="main-container">
-
-    <div class="grid m-3">
-        <p-card>
-        <h2>{{groupToDisplay?.name}}</h2>
+  <div class="grid m-3">
+    <p-card>
+      <h2>{{ groupToDisplay?.name }}</h2>
     </p-card>
-    </div>
-    <div class="grid m-3">
+  </div>
+  <div class="grid m-3">
+    <p-card>
+      <ng-template #title>
+        <h3>Membres</h3>
+      </ng-template>
+      <ng-template #content>
+        <p-table
+          [value]="groupToDisplay?.members!"
+          stripedRows
+          [tableStyle]="{ 'min-width': '50rem' }"
+        >
+          <ng-template #header>
+            <tr>
+              <th>Nom d'utilisateur</th>
+              <th>Email</th>
+              <th>Prénom</th>
+              <th>Nom</th>
+            </tr>
+          </ng-template>
+          <ng-template #body let-member>
+            <tr>
+              <td>{{ member.username }}</td>
+              <td>{{ member.email }}</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </ng-template>
+    </p-card>
+  </div>
+  <div class="grid m-3">
+    <p-card>
+      <ng-template #title>
+        <h3>Projets</h3>
+      </ng-template>
+      <ng-template #content>
+        <p-table
+          [value]="groupToDisplay?.projects!"
+          stripedRows
+          [tableStyle]="{ 'min-width': '50rem' }"
+        >
+          <ng-template #header>
+            <tr>
+              <th>Nom</th>
+              <th>Date de début</th>
+              <th>Date de fin</th>
+              <th>Responsable</th>
+            </tr>
+          </ng-template>
+          <ng-template #body let-project>
+            <tr>
+              <td>{{ project.name }}</td>
+              <td>{{ project.startDate | date : "EEEE d MMMM y" }}</td>
+              <td>{{ project.endDate | date : "EEEE d MMMM y" }}</td>
+              <td>{{ project.owner.username }}</td>
+              <td>
+                <p-button icon="pi pi-search" severity="success" [rounded]="true" [raised]="true" (onClick)="getDetails(project.id)">
 
-        <p-card>
-            <ng-template #title>
-                <h3>Membres</h3>
-            </ng-template>
-            <ng-template #content>
-                <p-table [value]="groupToDisplay?.members!" stripedRows [tableStyle]="{'min-width': '50rem'}">
-                    <ng-template #header>
-                        <tr>
-                            <th>Nom d'utilisateur</th>
-                            <th>Email</th>
-                            <th>Prénom</th>
-                            <th>Nom</th>
-                        </tr>
-                    </ng-template>
-                    <ng-template #body let-member>
-                        <tr>
-                            <td>{{member.username}}</td>
-                            <td>{{member.email}}</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </ng-template>
-                </p-table>
-            </ng-template>
-        </p-card>
-    </div>
-    <div class="grid m-3">
+              </p-button>
+            </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </ng-template>
+    </p-card>
+  </div>
 
-        <p-card>
-            <ng-template #title>
-                <h3>Projets</h3>
-            </ng-template>
-            <ng-template #content>
-                <p-table [value]="groupToDisplay?.projects!" stripedRows [tableStyle]="{'min-width': '50rem'}">
-                    <ng-template #header>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Date de début</th>
-                            <th>Date de fin</th>
-                            <th>Responsable</th>
-                        </tr>
-                    </ng-template>
-                    <ng-template #body let-project>
-                        <tr>
-                            <td>{{project.name}}</td>
-                            <td>{{project.startDate | date :'EEEE d MMMM y' }}</td>
-                            <td>{{project.endDate | date :'EEEE d MMMM y' }}</td>
-                            <td>{{project.owner.username}}</td>
-                        </tr>
-                    </ng-template>
-                </p-table>
-            </ng-template>
-        </p-card>
-    </div>
-
-    
-    
-    <!-- @for(member of groupToDisplay?.members; track member.id) {
+  <!-- @for(member of groupToDisplay?.members; track member.id) {
 <p>{{member.username}}</p>
     }
     @for(project of groupToDisplay?.projects; track project.id) {

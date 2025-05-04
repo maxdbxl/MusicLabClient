@@ -33,5 +33,7 @@ export const routes: Routes = [
     },
     {path: 'event/create', loadComponent: () => import ('./pages/create-event/create-event.component')
         .then(c => c.CreateEventComponent)
+    },
+    {path: 'project/:id', loadComponent: () => import ('./pages/project-details/project-details.component').then(c => c.ProjectDetailsComponent)
     }
 ];

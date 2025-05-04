@@ -26,5 +26,8 @@ export class GroupDetailsComponent {
     console.log(this.groupToDisplay);
   }
 
+  getDetails(id: number) {
+    this.router.navigate(['/project/', id]);
+  }
   
 }
