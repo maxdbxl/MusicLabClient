@@ -38,16 +38,12 @@ invitationsToDisplay: InvitationModel[] = [];
     
   }
 
-  reloadPage(){
-    window.location.reload()
-  }
-
   confirmAvailability(memberId: number, meetingId: number, availability: string) {
-    this.eventService.changeAvailability(memberId, meetingId, availability).subscribe(() => this.reloadPage());
+    this.eventService.changeAvailability(memberId, meetingId, availability).subscribe(() => this.eventService.getInvitationsConfirm(meetingId).subscribe(result => this.invitationsToDisplay = result));
     
   }
   confirmUnavailability(memberId: number, meetingId: number, availability: string) {
-    this.eventService.changeAvailability(memberId, meetingId, availability).subscribe(() => this.reloadPage());
+    this.eventService.changeAvailability(memberId, meetingId, availability).subscribe(() => this.eventService.getInvitationsConfirm(meetingId).subscribe(result => this.invitationsToDisplay = result));
     
   }
 
