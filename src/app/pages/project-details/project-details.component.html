@@ -1,1 +1,65 @@
-<p>project-details works!</p>
+<div class="main-container">
+    <div class="grid m-3">
+        <p-card>
+            <h2>Projet : Dear Evan Hansen</h2>
+        </p-card>
+    </div>
+    <div class="grid m-3">
+        <p-card>
+                <ng-template #title>
+                    <h3>Prochains évènements</h3>
+                </ng-template>
+                <ng-template #content>
+                    <p-table 
+                    [value]="eventsToDisplay"
+                    stripedRows
+                    [tableStyle]="{'min-width': '50rem'}"
+                    >
+                        <ng-template #header>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Lieu</th>
+                                <th>Date</th>
+                                <th>Début</th>
+                                <th>Fin</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template #body let-event>
+                            <tr>
+                                <td>{{event.name}}</td>
+                                <td>{{event.location}}</td>
+                                <td>{{event.startDate | date: "EEE d MMMM y"}}</td>
+                                <td>{{event.startDate | date: "H:mm" }}</td>
+                                <td>{{event.endDate | date: "H:mm" }}</td>
+                                <td><p-button icon="pi pi-search" severity="success" [rounded]="true" [raised]="true" (onClick)="getEventCard(event.id, event)"></p-button></td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </ng-template>
+
+        </p-card>
+    </div>
+
+    <div class="grid m-3">
+        <p-card>
+            <ng-template #title>
+                <h3>Participant·es</h3>
+            </ng-template>
+        </p-card>
+    </div>
+    <div class="grid m-3">
+        <p-card>
+            <ng-template #title>
+                <h3>Ressources</h3>
+            </ng-template>
+        </p-card>
+    </div>
+    <div class="grid m-3">
+        <p-card>
+            <ng-template #title>
+                <h3>To Do</h3>
+            </ng-template>
+        </p-card>
+    </div>
+
+</div>

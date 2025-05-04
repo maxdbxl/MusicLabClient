@@ -2,6 +2,7 @@ import { Routes, CanActivateFn } from '@angular/router';
 import { CreateGroupComponent } from './pages/create-group/create-group.component';
 import { CreateProjectComponent } from './pages/create-project/create-project.component';
 import { authGuard } from './guards/auth.guard';
+import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
 
 export const routes: Routes = [
     {path:'member/register', loadComponent : () => import(
@@ -35,5 +36,6 @@ export const routes: Routes = [
         .then(c => c.CreateEventComponent)
     },
     {path: 'project/:id', loadComponent: () => import ('./pages/project-details/project-details.component').then(c => c.ProjectDetailsComponent)
-    }
+    },
+    
 ];

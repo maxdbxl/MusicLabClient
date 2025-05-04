@@ -7,5 +7,5 @@ export interface EventModel {
     endDate: string;
     isConfirmed: boolean;
     eventType: 
-    'Repetition' | 'Representation' | 'Réunion orga' | 'Réunion logistique' | 'Temps perso' | 'Autres'
+    'Repetition' | 'Representation' | 'OrganizationalMeeting' | 'LogisticsMeeting' | 'PersonalEvent' | 'Other'
 }
